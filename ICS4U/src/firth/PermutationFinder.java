@@ -30,7 +30,7 @@ public class PermutationFinder {
 
 		permutations = permut(n, r);
 
-		System.out.println(permutations);
+		System.out.println(n+" ! / ( "+n+" - "+r+" ) ! = "+permutations);
 		scan.close();
 	}
 
