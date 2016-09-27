@@ -11,6 +11,11 @@ public class NumDigits {
 
 	public static int counter = 0;
 
+	
+	/**
+	 * This is the main method for the program
+	 * @param args a string array
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -23,7 +28,7 @@ public class NumDigits {
 		numDigits(numin);
 
 		// outputting the number of digits in the integer
-		System.out.println("the number " + numin + " has " + counter + " digits");
+		System.out.println("the number " + numin + " has " + counter + " digit(s)");
 		scan.close();
 	}
 
