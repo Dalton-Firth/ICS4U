@@ -1,8 +1,12 @@
 
 public class StudentInfo {
-
+	/* StudentInfo.java
+	 * This class acts as the template for the student records
+	 * @author Dalton Firth
+	 * @version 2016/09/28
+	 */
 	private String firstName, lastName, address, city, province, postalCode, phoneNumber, birthDate;
-
+	private long studentID;
 	/**
 	 * Gets the student's first name
 	 * @return the firstName
@@ -41,7 +45,7 @@ public class StudentInfo {
 	 * Gets the student's address
 	 * @return the address
 	 */
-	public String getaddress() {
+	public String getAddress() {
 		return address;
 	}
 
@@ -50,7 +54,7 @@ public class StudentInfo {
 	 * @param address
 	 *            the address to set
 	 */
-	public void setaddress(String address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
@@ -138,6 +142,21 @@ public class StudentInfo {
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
+
+	/**
+	 * @return the studentID
+	 */
+	public long getStudentID() {
+		return studentID;
+	}
+
+	/**
+	 * @param studentID the studentID to set
+	 */
+	public void setStudentID(long studentID) {
+		this.studentID = studentID;
+	}
+
 
 }
 
