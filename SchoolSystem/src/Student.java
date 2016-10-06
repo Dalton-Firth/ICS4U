@@ -81,7 +81,7 @@ public class Student {
 		System.out.println("Enter your birth date (yyyy/mm/dd)");
 		studentRecords.get(studentRecords.size() - 1).setBirthDate(scan.nextLine());
 	}
-
+	
 	/**
 	 * This method prints the fields of a student
 	 * @param location Int that determines which student in the array list is printed
@@ -104,14 +104,14 @@ public class Student {
 
 		for (int i = 0; i < studentRecords.size(); i++) {
 			System.out.println();
-			System.out.println("first name: " + studentRecords.get(studentRecords.size() - 1).getFirstName());
-			System.out.println("last name: " + studentRecords.get(studentRecords.size() - 1).getLastName());
-			System.out.println("address: " + studentRecords.get(studentRecords.size() - 1).getAddress());
-			System.out.println("city: " + studentRecords.get(studentRecords.size() - 1).getCity());
-			System.out.println("province: " + studentRecords.get(studentRecords.size() - 1).getProvince());
-			System.out.println("postal code: " + studentRecords.get(studentRecords.size() - 1).getPostalCode());
-			System.out.println("phone number: " + studentRecords.get(studentRecords.size() - 1).getPhoneNumber());
-			System.out.println("birth date: " + studentRecords.get(studentRecords.size() - 1).getBirthDate());
+			System.out.println("first name: " + studentRecords.get(i).getFirstName());
+			System.out.println("last name: " + studentRecords.get(i).getLastName());
+			System.out.println("address: " + studentRecords.get(i).getAddress());
+			System.out.println("city: " + studentRecords.get(i).getCity());
+			System.out.println("province: " + studentRecords.get(i).getProvince());
+			System.out.println("postal code: " + studentRecords.get(i).getPostalCode());
+			System.out.println("phone number: " + studentRecords.get(i).getPhoneNumber());
+			System.out.println("birth date: " + studentRecords.get(i).getBirthDate());
 		}
 	}
 

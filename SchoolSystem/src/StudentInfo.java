@@ -7,6 +7,240 @@ public class StudentInfo {
 	 */
 	private String firstName, lastName, address, city, province, postalCode, phoneNumber, birthDate;
 	private long studentID;
+	
+	/**
+	 * Default constructor (empty except for a student number)
+	 */
+	public StudentInfo() {
+		setBirthDate("");
+		setCity("");
+		setFirstName("");
+		setLastName("");
+		setPhoneNumber("");
+		setPostalCode("");
+		setProvince("");
+		setAddress("");
+		setStudentID(++studentID);
+	}
+
+	/**
+	 * Makes a new Student with a first name
+	 * 
+	 * @param firstName
+	 *           String - the student's first name
+	 */
+	public StudentInfo(String firstName) {
+		setBirthDate("");
+		setCity("");
+		setFirstName(firstName);
+		setLastName("");
+		setPhoneNumber("");
+		setPostalCode("");
+		setProvince("");
+		setAddress("");
+		setStudentID(++studentID);
+	}
+
+	/**
+	 * Makes a new Student with a first name and a last name
+	 * 
+	 * @param firstName
+	 *           String - the student's first name
+	 * @param lastName
+	 *           String - the student's last name
+	 */
+	public StudentInfo(String firstName, String lastName) {
+		setBirthDate("");
+		setCity("");
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhoneNumber("");
+		setPostalCode("");
+		setProvince("");
+		setAddress("");
+		setStudentID(++studentID);
+	}
+
+	/**
+	 * Makes a new Student with a first name, a last name and a birth date
+	 * 
+	 * @param firstName
+	 *           String - the student's first name
+	 * @param lastName
+	 *           String - the student's last name
+	 * @param birth
+	 *           String - the student's birth date
+	 */
+	public StudentInfo(String firstName, String lastName, String birth) {
+		 
+		setBirthDate(birth);
+		setCity("");
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhoneNumber("");
+		setPostalCode("");
+		setProvince("");
+		setAddress("");
+		setStudentID(++studentID);
+	}
+
+	/**
+	 * Makes a new Student with a first name, a last name, a birth date and a home city
+	 * 
+	 * @param firstName
+	 *           String - the student's first name
+	 * @param lastName
+	 *           String - the student's last name
+	 * @param birth
+	 *           String - the student's birth date
+	 * @param city
+	 *           String - the student's home city
+	 */
+	public StudentInfo(String firstName, String lastName, String birth, String city) {
+		 
+		setBirthDate(birth);
+		setCity(city);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhoneNumber("");
+		setPostalCode("");
+		setProvince("");
+		setAddress("");
+		setStudentID(++studentID);
+	}
+
+	/**
+	 * Makes a new Student with a first name, a last name, a birth date, a home city and a phone number
+	 * 
+	 * @param firstName
+	 *           String - the student's first name
+	 * @param lastName
+	 *           String - the student's last name
+	 * @param birth
+	 *           String - the student's birth date
+	 * @param city
+	 *           String - the student's home city
+	 * @param phoneNumber
+	 *           String - the student's phone number
+	 */
+	public StudentInfo(String firstName, String lastName, String birth, String city, String phoneNumber) {
+		 
+		setBirthDate(birth);
+		setCity(city);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhoneNumber(phoneNumber);
+		setPostalCode("");
+		setProvince("");
+		setAddress("");
+		setStudentID(++studentID);
+	}
+
+	/**
+	 * Makes a new Student with a first name, a last name, a birth date, a home city, a phone number and a postal code
+	 * 
+	 * @param firstName
+	 *           String - the student's first name
+	 * @param lastName
+	 *           String - the student's last name
+	 * @param birth
+	 *           String - the student's birth date
+	 * @param city
+	 *           String - the student's home city
+	 * @param phoneNumber
+	 *           String - the student's phone number
+	 * @param postalCode
+	 *           String - the student's postal code
+	 */
+	public StudentInfo(String firstName, String lastName, String birth, String city, String phoneNumber, String postalCode) {
+		
+		setBirthDate(birth);
+		setCity(city);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhoneNumber(phoneNumber);
+		setPostalCode(postalCode);
+		setProvince("");
+		setAddress("");
+		setStudentID(++studentID);
+	}
+
+	/**
+	 * Makes a new Student with a first name, a last name, a birth date, a home city, a phone number, a postal code and a province
+	 * 
+	 * @param firstName
+	 *           String - the student's first name
+	 * @param lastName
+	 *           String - the student's last name
+	 * @param birth
+	 *           String - the student's birth date
+	 * @param city
+	 *           String - the student's home city
+	 * @param phoneNumber
+	 *           String - the student's phone number
+	 * @param postalCode
+	 *           String - the student's postal code
+	 * @param province
+	 *           String - the student's home province
+	 */
+	public StudentInfo(String firstName, String lastName, String birth, String city, String phoneNumber, String postalCode, String province) {
+		 
+		setBirthDate(birth);
+		setCity(city);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhoneNumber(phoneNumber);
+		setPostalCode(postalCode);
+		setProvince(province);
+		setAddress("");
+		setStudentID(++studentID);
+	}
+
+	/**
+	 * Makes a new Student with a first name, a last name, a birth date, a home city, a phone number, a postal code, a province and street address
+	 * 
+	 * @param firstName
+	 *           String - the student's first name
+	 * @param lastName
+	 *           String - the student's last name
+	 * @param birth
+	 *           String - the student's birth date
+	 * @param city
+	 *           String - the student's home city
+	 * @param phoneNumber
+	 *           String - the student's phone number
+	 * @param postalCode
+	 *           String - the student's postal code
+	 * @param province
+	 *           String - the student's home province
+	 * @param Address
+	 *           String - the student's street address
+	 */
+	public StudentInfo(String firstName, String lastName, String birth, String city, String phoneNumber, String postalCode, String province, String Address) {
+		 
+		setBirthDate(birth);
+		setCity(city);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhoneNumber(phoneNumber);
+		setPostalCode(postalCode);
+		setProvince(province);
+		setAddress(Address);
+		setStudentID(++studentID);
+	}
+	
+	
+	     /////////////////////////////////////////////
+	    //										   //
+	   //										  //
+	  //				HERE					 //
+	 //	 									    //
+	//										   //
+   /////////////////////////////////////////////
+	
+	
+	
+	
 	/**
 	 * Gets the student's first name
 	 * @return the firstName
@@ -19,7 +253,7 @@ public class StudentInfo {
 	 * Sets the student's first name
 	 * @param firstName
 	 *            the firstName to set
-	 */
+	 */	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
