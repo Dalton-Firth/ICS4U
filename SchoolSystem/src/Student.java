@@ -134,6 +134,7 @@ public class Student {
 		System.out.println("To search by province please press: 6");
 		System.out.println("To search by postal code please press: 7");
 		System.out.println("To search by phone number please press: 8");
+		System.out.println("To search by student number press: 9");
 		
 		try {
 
