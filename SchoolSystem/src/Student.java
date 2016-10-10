@@ -62,6 +62,9 @@ public class Student {
 
 		System.out.println("Enter your last name");
 		studentRecords.get(studentRecords.size() - 1).setLastName(scan.nextLine());
+		
+		System.out.println("Enter your birth date (yyyy/mm/dd)");
+		studentRecords.get(studentRecords.size() - 1).setBirthDate(scan.nextLine());
 
 		System.out.println("Enter your address");
 		studentRecords.get(studentRecords.size() - 1).setAddress(scan.nextLine());
@@ -78,8 +81,7 @@ public class Student {
 		System.out.println("Enter your phone number");
 		studentRecords.get(studentRecords.size() - 1).setPhoneNumber(scan.nextLine());
 
-		System.out.println("Enter your birth date (yyyy/mm/dd)");
-		studentRecords.get(studentRecords.size() - 1).setBirthDate(scan.nextLine());
+		
 	}
 	
 	/**
@@ -89,12 +91,13 @@ public class Student {
 	public static void printStudent(int location) {
 		System.out.println("first name: " + studentRecords.get(location).getFirstName());
 		System.out.println("last name: " + studentRecords.get(location).getLastName());
+		System.out.println("birth date: " + studentRecords.get(location).getBirthDate());
 		System.out.println("address: " + studentRecords.get(location).getAddress());
 		System.out.println("city: " + studentRecords.get(location).getCity());
 		System.out.println("province: " + studentRecords.get(location).getProvince());
 		System.out.println("postal code: " + studentRecords.get(location).getPostalCode());
 		System.out.println("phone number: " + studentRecords.get(location).getPhoneNumber());
-		System.out.println("birth date: " + studentRecords.get(location).getBirthDate());
+		
 	}
 
 	/**
@@ -106,12 +109,13 @@ public class Student {
 			System.out.println();
 			System.out.println("first name: " + studentRecords.get(i).getFirstName());
 			System.out.println("last name: " + studentRecords.get(i).getLastName());
+			System.out.println("birth date: " + studentRecords.get(i).getBirthDate());
 			System.out.println("address: " + studentRecords.get(i).getAddress());
 			System.out.println("city: " + studentRecords.get(i).getCity());
 			System.out.println("province: " + studentRecords.get(i).getProvince());
 			System.out.println("postal code: " + studentRecords.get(i).getPostalCode());
 			System.out.println("phone number: " + studentRecords.get(i).getPhoneNumber());
-			System.out.println("birth date: " + studentRecords.get(i).getBirthDate());
+			
 		}
 	}
 
@@ -124,12 +128,13 @@ public class Student {
 
 		System.out.println("To search by first name please press: 1");
 		System.out.println("To search by last name please press: 2");
-		System.out.println("To search by address please press: 3");
-		System.out.println("To search by city please press: 4");
-		System.out.println("To search by province please press: 5");
-		System.out.println("To search by postal code please press: 6");
-		System.out.println("To search by phone number please press: 7");
-		System.out.println("To search by birth date please press: 8");
+		System.out.println("To search by birth date please press: 3");
+		System.out.println("To search by address please press: 4");
+		System.out.println("To search by city please press: 5");
+		System.out.println("To search by province please press: 6");
+		System.out.println("To search by postal code please press: 7");
+		System.out.println("To search by phone number please press: 8");
+		
 		try {
 
 			options = Integer.parseInt(scan.nextLine());
@@ -145,17 +150,17 @@ public class Student {
 		if (options == 2)
 			sortLast();
 		if (options == 3)
-			sortAddress();
-		if (options == 4)
-			sortCity();
-		if (options == 5)
-			sortProvince();
-		if (options == 6)
-			sortPostalCode();
-		if (options == 7)
-			sortPhoneNumber();
-		if (options == 8)
 			sortBirthDate();
+		if (options == 4)
+			sortAddress();
+		if (options == 5)
+			sortCity();
+		if (options == 6)
+			sortProvince();
+		if (options == 7)
+			sortPostalCode();
+		if (options == 8)
+			sortPhoneNumber();
 		if (options == 9)
 			sortStudentId();
 
@@ -172,6 +177,9 @@ public class Student {
 
 		System.out.println("Enter your last name");
 		studentRecords.get(location).setLastName(scan.nextLine());
+		
+		System.out.println("Enter your birth date (yyyy/mm/dd)");
+		studentRecords.get(studentRecords.size() - 1).setBirthDate(scan.nextLine());
 
 		System.out.println("Enter your address");
 		studentRecords.get(location).setAddress(scan.nextLine());
@@ -188,8 +196,7 @@ public class Student {
 		System.out.println("Enter your phone number");
 		studentRecords.get(studentRecords.size() - 1).setPhoneNumber(scan.nextLine());
 
-		System.out.println("Enter your birth date (yyyy/mm/dd)");
-		studentRecords.get(studentRecords.size() - 1).setBirthDate(scan.nextLine());
+		
 	}
 
 	/**
@@ -234,6 +241,36 @@ public class Student {
 
 		for (int i = 0; i < studentRecords.size(); i++) {
 			if (studentRecords.get(i).getLastName().equalsIgnoreCase(Lastname)) {
+				printStudent(i);
+				System.out.println("Is this the student you are looking for? (y/n)");
+				isUser = scan.nextLine();
+				if (isUser.equals("y") || isUser.equals("yes")) { 
+					System.out.println("Would you like to edit or delete this user(edit/delete/none)");
+					userEdit = scan.nextLine();
+					if (userEdit.equalsIgnoreCase("edit"))
+						editStudent(i);
+					else if (userEdit.equalsIgnoreCase("delete"))
+						studentRecords.remove(i);
+					break;
+				}
+			} else if (scan.nextLine().equals("n") || scan.nextLine().equals("no"))
+				continue;
+
+		}
+	}
+	
+	/**
+	 * Sorts students by birth date
+	 */
+	public static void sortBirthDate() {
+
+		System.out.println("Please enter their BirthDate");
+		String birthDate = scan.nextLine();
+
+		String isUser = null, userEdit = null;
+
+		for (int i = 0; i < studentRecords.size(); i++) {
+			if (studentRecords.get(i).getBirthDate().equalsIgnoreCase(birthDate)) {
 				printStudent(i);
 				System.out.println("Is this the student you are looking for? (y/n)");
 				isUser = scan.nextLine();
@@ -384,36 +421,6 @@ public class Student {
 
 		for (int i = 0; i < studentRecords.size(); i++) {
 			if (studentRecords.get(i).getPhoneNumber().equalsIgnoreCase(phoneNumber)) {
-				printStudent(i);
-				System.out.println("Is this the student you are looking for? (y/n)");
-				isUser = scan.nextLine();
-				if (isUser.equals("y") || isUser.equals("yes")) { 
-					System.out.println("Would you like to edit or delete this user(edit/delete/none)");
-					userEdit = scan.nextLine();
-					if (userEdit.equalsIgnoreCase("edit"))
-						editStudent(i);
-					else if (userEdit.equalsIgnoreCase("delete"))
-						studentRecords.remove(i);
-					break;
-				}
-			} else if (scan.nextLine().equals("n") || scan.nextLine().equals("no"))
-				continue;
-
-		}
-	}
-	
-	/**
-	 * Sorts students by birth date
-	 */
-	public static void sortBirthDate() {
-
-		System.out.println("Please enter their BirthDate");
-		String birthDate = scan.nextLine();
-
-		String isUser = null, userEdit = null;
-
-		for (int i = 0; i < studentRecords.size(); i++) {
-			if (studentRecords.get(i).getBirthDate().equalsIgnoreCase(birthDate)) {
 				printStudent(i);
 				System.out.println("Is this the student you are looking for? (y/n)");
 				isUser = scan.nextLine();
