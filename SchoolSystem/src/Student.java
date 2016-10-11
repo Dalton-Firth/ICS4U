@@ -76,7 +76,17 @@ public class Student {
 		studentRecords.get(studentRecords.size() - 1).setProvince(scan.nextLine());
 
 		System.out.println("Enter your postal code");
-		studentRecords.get(studentRecords.size() - 1).setPostalCode(scan.nextLine());
+		String userInput = scan.nextLine();
+		if (studentRecords.get(studentRecords.size() - 1).checkPostalCode(userInput)) {
+			studentRecords.get(studentRecords.size() - 1).setPostalCode(userInput);
+		}
+		else {
+			studentRecords.remove(studentRecords.size() - 1);
+			System.out.println("");
+			System.out.println("Invalid input, please try again.");
+			System.out.println("");
+			return;
+		}
 
 		System.out.println("Enter your phone number");
 		studentRecords.get(studentRecords.size() - 1).setPhoneNumber(scan.nextLine());

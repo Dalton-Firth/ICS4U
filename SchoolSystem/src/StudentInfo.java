@@ -96,16 +96,16 @@ public class StudentInfo {
 	 * @param city
 	 *           String - the student's home city
 	 */
-	public StudentInfo(String firstName, String lastName, String birth, String city) {
+	public StudentInfo(String firstName, String lastName, String birth, String address) {
 		 
 		setBirthDate(birth);
-		setCity(city);
 		setFirstName(firstName);
 		setLastName(lastName);
-		setPhoneNumber("");
-		setPostalCode("");
+		setAddress(address);
+		setCity("");
 		setProvince("");
-		setAddress("");
+		setPostalCode("");
+		setPhoneNumber("");
 		setStudentID(++studentID);
 	}
 
@@ -123,16 +123,16 @@ public class StudentInfo {
 	 * @param phoneNumber
 	 *           String - the student's phone number
 	 */
-	public StudentInfo(String firstName, String lastName, String birth, String city, String phoneNumber) {
+	public StudentInfo(String firstName, String lastName, String birth, String address, String city) {
 		 
 		setBirthDate(birth);
-		setCity(city);
 		setFirstName(firstName);
 		setLastName(lastName);
-		setPhoneNumber(phoneNumber);
-		setPostalCode("");
+		setAddress(address);
+		setCity(city);
 		setProvince("");
-		setAddress("");
+		setPostalCode("");
+		setPhoneNumber("");
 		setStudentID(++studentID);
 	}
 
@@ -152,16 +152,16 @@ public class StudentInfo {
 	 * @param postalCode
 	 *           String - the student's postal code
 	 */
-	public StudentInfo(String firstName, String lastName, String birth, String city, String phoneNumber, String postalCode) {
+	public StudentInfo(String firstName, String lastName, String birth, String address, String city, String province) {
 		
 		setBirthDate(birth);
-		setCity(city);
 		setFirstName(firstName);
 		setLastName(lastName);
-		setPhoneNumber(phoneNumber);
-		setPostalCode(postalCode);
-		setProvince("");
-		setAddress("");
+		setAddress(address);
+		setCity(city);
+		setProvince(province);
+		setPostalCode("");
+		setPhoneNumber("");
 		setStudentID(++studentID);
 	}
 
@@ -183,17 +183,20 @@ public class StudentInfo {
 	 * @param province
 	 *           String - the student's home province
 	 */
-	public StudentInfo(String firstName, String lastName, String birth, String city, String phoneNumber, String postalCode, String province) {
+	public StudentInfo(String firstName, String lastName, String birth, String address, String city, String province, String postalCode) {
 		 
 		setBirthDate(birth);
-		setCity(city);
 		setFirstName(firstName);
 		setLastName(lastName);
-		setPhoneNumber(phoneNumber);
-		setPostalCode(postalCode);
+		setAddress(address);
+		setCity(city);
 		setProvince(province);
-		setAddress("");
+		if (checkPostalCode(postalCode)) {
+			setPostalCode(postalCode);
+		}
+		setPhoneNumber("");
 		setStudentID(++studentID);
+	
 	}
 
 	/**
@@ -219,13 +222,15 @@ public class StudentInfo {
 	public StudentInfo(String firstName, String lastName, String birth, String city, String phoneNumber, String postalCode, String province, String Address) {
 		 
 		setBirthDate(birth);
-		setCity(city);
 		setFirstName(firstName);
 		setLastName(lastName);
-		setPhoneNumber(phoneNumber);
-		setPostalCode(postalCode);
+		setAddress(address);
+		setCity(city);
 		setProvince(province);
-		setAddress(Address);
+		if (checkPostalCode(postalCode)) {
+			setPostalCode(postalCode);
+		}
+		setPhoneNumber(phoneNumber);
 		setStudentID(++studentID);
 	}
 	
@@ -240,6 +245,39 @@ public class StudentInfo {
 	
 	
 	
+	public boolean checkPostalCode(String postalCode){
+		for (int i = 0; i < postalCode.length(); i++) {
+			if (i % 2 == 1) {
+				if (!equalsUpperCaseLetter(postalCode.charAt(i))) {
+					return false;
+				}
+			}
+			else {
+				if (!equalsNumber(postalCode.charAt(i))) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	public static boolean equalsUpperCaseLetter(char letter) {
+		if (letter == 'A' || letter == 'B' || letter == 'C' || letter == 'D' || letter == 'E' || letter == 'F' || letter == 'G' || letter == 'H' || letter == 'I' || letter == 'J' || letter == 'K' || letter == 'L' || letter == 'M' || letter == 'N' || letter == 'O' || letter == 'P' || letter == 'Q' || letter == 'R' || letter == 'S' || letter == 'T' || letter == 'U' || letter == 'V' || letter == 'W' || letter == 'X' || letter == 'Y' || letter == 'Z') {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public static boolean equalsNumber(char number) {
+		if (number == '1' || number == '2' || number == '3' || number == '4' || number == '5' || number == '6' || number == '7' || number == '8' || number == '9') {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 	/**
 	 * Gets the student's first name
