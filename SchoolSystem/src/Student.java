@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 /* Student.java
  * This program acts as a hub in order to perform a number of tasks related to student records
@@ -12,7 +13,7 @@ public class Student {
 
 	public static ArrayList<StudentInfo> studentRecords = new ArrayList<StudentInfo>();
 	
-	private static long idGenerator=0;
+	//private static long idGenerator=0;
 
 	public static void main(String[] args) {
 
@@ -54,8 +55,8 @@ public class Student {
 		studentRecords.trimToSize();
 		studentRecords.add(new StudentInfo());
 		
-		idGenerator++;
-		studentRecords.get(studentRecords.size() - 1).setStudentID(idGenerator);
+		//idGenerator++;
+		studentRecords.get(studentRecords.size() - 1).setStudentID();
 
 		System.out.println("Enter your first name");
 		studentRecords.get(studentRecords.size() - 1).setFirstName(scan.nextLine());
@@ -75,8 +76,8 @@ public class Student {
 		System.out.println("Enter your province");
 		studentRecords.get(studentRecords.size() - 1).setProvince(scan.nextLine());
 
-		System.out.println("Enter your postal code");
-		String userInput = scan.nextLine();
+		System.out.println("Enter your postal code (X#X#X#X)");
+		String userInput = scan.nextLine().toUpperCase();
 		if (studentRecords.get(studentRecords.size() - 1).checkPostalCode(userInput)) {
 			studentRecords.get(studentRecords.size() - 1).setPostalCode(userInput);
 		}
@@ -107,7 +108,7 @@ public class Student {
 		System.out.println("province: " + studentRecords.get(location).getProvince());
 		System.out.println("postal code: " + studentRecords.get(location).getPostalCode());
 		System.out.println("phone number: " + studentRecords.get(location).getPhoneNumber());
-		
+		System.out.println("Student ID: " + studentRecords.get(location).getStudentID());
 	}
 
 	/**
@@ -115,6 +116,7 @@ public class Student {
 	 */
 	public static void printAllStudents() {
 
+		Collections.sort(studentRecords);
 		for (int i = 0; i < studentRecords.size(); i++) {
 			System.out.println();
 			System.out.println("first name: " + studentRecords.get(i).getFirstName());
@@ -125,6 +127,7 @@ public class Student {
 			System.out.println("province: " + studentRecords.get(i).getProvince());
 			System.out.println("postal code: " + studentRecords.get(i).getPostalCode());
 			System.out.println("phone number: " + studentRecords.get(i).getPhoneNumber());
+			System.out.println("Student ID: " + studentRecords.get(i).getStudentID());
 			
 		}
 	}
@@ -244,7 +247,7 @@ public class Student {
 	 * Sorts students by last name
 	 */
 	public static void sortLast() {
-
+	
 		System.out.println("Please enter their last name");
 		String Lastname = scan.nextLine();
 
