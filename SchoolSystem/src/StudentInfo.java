@@ -1,5 +1,5 @@
 
-public class StudentInfo implements Comparable{
+public class StudentInfo implements Comparable {
 	/*
 	 * StudentInfo.java This class acts as the template for the student records
 	 * 
@@ -8,9 +8,12 @@ public class StudentInfo implements Comparable{
 	 * @version 2016/09/28
 	 */
 	private static long studentNum = 323000000;
+	//public enum Province {BRITISHCOLUMBIA, YUKON, ALBERTA, NORTHWESTTERRITORIES, SASKATCHEWAN, NUNAVUT, MANITOBA, ONTARIO, QUEBEC, NEWBRUNSWICK, NEWFOUNDLANDANDLABRADOR, PRINCEEDWARDISLAND, NOVASCOTIA, NULL}
+
+	private String firstName, lastName, birthDate, address, city, postalCode, phoneNumber;
+	private long studentID = studentNum;
 	
-	private String firstName, lastName, birthDate, address, city, province, postalCode, phoneNumber;
-	private long studentID=studentNum;
+	private Province province;
 
 	/**
 	 * Default constructor (empty except for a student number)
@@ -22,9 +25,9 @@ public class StudentInfo implements Comparable{
 		setLastName("");
 		setPhoneNumber("");
 		setPostalCode("");
-		setProvince("");
+		setProvince(Province.ALBERTA);
 		setAddress("");
-		setStudentID();
+		setStudentID(++studentID);
 	}
 
 	/**
@@ -40,9 +43,9 @@ public class StudentInfo implements Comparable{
 		setLastName("");
 		setPhoneNumber("");
 		setPostalCode("");
-		setProvince("");
+		setProvince(Province.ALBERTA);
 		setAddress("");
-		setStudentID();
+		setStudentID(++studentID);
 	}
 
 	/**
@@ -60,9 +63,9 @@ public class StudentInfo implements Comparable{
 		setLastName(lastName);
 		setPhoneNumber("");
 		setPostalCode("");
-		setProvince("");
+		setProvince(Province.ALBERTA);
 		setAddress("");
-		setStudentID();
+		setStudentID(++studentID);
 	}
 
 	/**
@@ -83,9 +86,9 @@ public class StudentInfo implements Comparable{
 		setLastName(lastName);
 		setPhoneNumber("");
 		setPostalCode("");
-		setProvince("");
+		setProvince(Province.ALBERTA);
 		setAddress("");
-		setStudentID();
+		setStudentID(++studentID);
 	}
 
 	/**
@@ -108,10 +111,10 @@ public class StudentInfo implements Comparable{
 		setLastName(lastName);
 		setAddress(address);
 		setCity("");
-		setProvince("");
+		setProvince(Province.ALBERTA);
 		setPostalCode("");
 		setPhoneNumber("");
-		setStudentID();
+		setStudentID(++studentID);
 	}
 
 	/**
@@ -136,10 +139,10 @@ public class StudentInfo implements Comparable{
 		setLastName(lastName);
 		setAddress(address);
 		setCity(city);
-		setProvince("");
+		setProvince(Province.ALBERTA);
 		setPostalCode("");
 		setPhoneNumber("");
-		setStudentID();
+		setStudentID(++studentID);
 	}
 
 	/**
@@ -159,7 +162,7 @@ public class StudentInfo implements Comparable{
 	 * @param postalCode
 	 *            String - the student's postal code
 	 */
-	public StudentInfo(String firstName, String lastName, String birth, String address, String city, String province) {
+	public StudentInfo(String firstName, String lastName, String birth, String address, String city, Province province) {
 
 		setBirthDate(birth);
 		setFirstName(firstName);
@@ -169,7 +172,7 @@ public class StudentInfo implements Comparable{
 		setProvince(province);
 		setPostalCode("");
 		setPhoneNumber("");
-		setStudentID();
+		setStudentID(++studentID);
 	}
 
 	/**
@@ -191,7 +194,7 @@ public class StudentInfo implements Comparable{
 	 * @param province
 	 *            String - the student's home province
 	 */
-	public StudentInfo(String firstName, String lastName, String birth, String address, String city, String province,
+	public StudentInfo(String firstName, String lastName, String birth, String address, String city, Province province,
 			String postalCode) {
 
 		setBirthDate(birth);
@@ -204,7 +207,7 @@ public class StudentInfo implements Comparable{
 			setPostalCode(postalCode);
 		}
 		setPhoneNumber("");
-		setStudentID();
+		setStudentID(++studentID);
 
 	}
 
@@ -229,12 +232,13 @@ public class StudentInfo implements Comparable{
 	 * @param Address
 	 *            String - the student's street address
 	 */
-	public StudentInfo(String firstName, String lastName, String birth, String city, String phoneNumber,
-			String postalCode, String province, String Address) {
+	public StudentInfo(String firstName, String lastName, String birth, String address, String city, Province province,
+			String postalCode, String phoneNumber) {
 
-		setBirthDate(birth);
+		
 		setFirstName(firstName);
 		setLastName(lastName);
+		setBirthDate(birth);
 		setAddress(address);
 		setCity(city);
 		setProvince(province);
@@ -242,10 +246,14 @@ public class StudentInfo implements Comparable{
 			setPostalCode(postalCode);
 		}
 		setPhoneNumber(phoneNumber);
-		setStudentID();
+		setStudentID(++studentNum);
 	}
 
-
+	/**
+	 * this method checks to see if the postal code entered is the expected format
+	 * @param postalCode a string input that is compared
+	 * @return
+	 */
 	public boolean checkPostalCode(String postalCode) {
 		for (int i = 0; i < postalCode.length(); i++) {
 			if (i % 2 == 0) {
@@ -282,22 +290,23 @@ public class StudentInfo implements Comparable{
 		}
 	}
 
-	public String toString(){
-		return firstName+","+lastName+","+birthDate+","+address+","+city+","+province+","+postalCode+","+phoneNumber;
+	public String toString() {
+		return firstName + "," + lastName + "," + birthDate + "," + address + "," + city + "," + province + ","
+				+ postalCode + "," + phoneNumber;
 	}
-	
-	public boolean equals(StudentInfo iD){
-		if(this.studentID==iD.getStudentID())
+
+	public boolean equals(StudentInfo iD) {
+		if (this.studentID == iD.getStudentID())
 			return true;
 		return false;
 	}
-	
-	public int compareTo(Object E){
-		
-		StudentInfo tempStudent = (StudentInfo) E ;
-		
+
+	public int compareTo(Object E) {
+
+		StudentInfo tempStudent = (StudentInfo) E;
+
 		return this.getLastName().compareTo(tempStudent.getLastName());
-			
+
 	}
 
 	/**
@@ -381,7 +390,7 @@ public class StudentInfo implements Comparable{
 	 * 
 	 * @return the province
 	 */
-	public String getProvince() {
+	public Province getProvince() {
 		return province;
 	}
 
@@ -391,7 +400,7 @@ public class StudentInfo implements Comparable{
 	 * @param province
 	 *            the province to set
 	 */
-	public void setProvince(String province) {
+	public void setProvince(Province province) {
 		this.province = province;
 	}
 
@@ -463,10 +472,11 @@ public class StudentInfo implements Comparable{
 	 * @param studentID
 	 *            the studentID to set
 	 */
-	public void setStudentID() {
-		studentID++;
-		++studentNum;
+	public void setStudentID(long studentID) {
+		this.studentID = studentID;
+		studentNum++;
 	}
-	
 
 }
+
+//enum Day{SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY}
