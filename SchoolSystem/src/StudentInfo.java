@@ -1,15 +1,14 @@
+/* StudentInfo.java
+ * This program creates a studentInfo object with various fields that store data related to keeping student records
+ * @author Dalton Firth
+ * @version 2016/10/28
+ */
+
 
 public class StudentInfo implements Comparable {
-	/*
-	 * StudentInfo.java This class acts as the template for the student records
-	 * 
-	 * @author Dalton Firth
-	 * 
-	 * @version 2016/09/28
-	 */
+	
 	private static long studentNum = 323000000;
-	//public enum Province {BRITISHCOLUMBIA, YUKON, ALBERTA, NORTHWESTTERRITORIES, SASKATCHEWAN, NUNAVUT, MANITOBA, ONTARIO, QUEBEC, NEWBRUNSWICK, NEWFOUNDLANDANDLABRADOR, PRINCEEDWARDISLAND, NOVASCOTIA, NULL}
-
+	
 	private String firstName, lastName, birthDate, address, city, postalCode, phoneNumber;
 	private long studentID = studentNum;
 	
@@ -203,9 +202,7 @@ public class StudentInfo implements Comparable {
 		setAddress(address);
 		setCity(city);
 		setProvince(province);
-		if (checkPostalCode(postalCode)) {
-			setPostalCode(postalCode);
-		}
+		setPostalCode(postalCode);
 		setPhoneNumber("");
 		setStudentID(++studentID);
 
@@ -242,57 +239,16 @@ public class StudentInfo implements Comparable {
 		setAddress(address);
 		setCity(city);
 		setProvince(province);
-		if (checkPostalCode(postalCode)) {
-			setPostalCode(postalCode);
-		}
+		setPostalCode(postalCode);
 		setPhoneNumber(phoneNumber);
 		setStudentID(++studentNum);
 	}
 
-	/**
-	 * this method checks to see if the postal code entered is the expected format
-	 * @param postalCode a string input that is compared
-	 * @return
-	 */
-	public boolean checkPostalCode(String postalCode) {
-		for (int i = 0; i < postalCode.length(); i++) {
-			if (i % 2 == 0) {
-				if (!equalsUpperCaseLetter(postalCode.charAt(i))) {
-					return false;
-				}
-			} else {
-				if (!equalsNumber(postalCode.charAt(i))) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-
-	public static boolean equalsUpperCaseLetter(char letter) {
-		if (letter == 'A' || letter == 'B' || letter == 'C' || letter == 'D' || letter == 'E' || letter == 'F'
-				|| letter == 'G' || letter == 'H' || letter == 'I' || letter == 'J' || letter == 'K' || letter == 'L'
-				|| letter == 'M' || letter == 'N' || letter == 'O' || letter == 'P' || letter == 'Q' || letter == 'R'
-				|| letter == 'S' || letter == 'T' || letter == 'U' || letter == 'V' || letter == 'W' || letter == 'X'
-				|| letter == 'Y' || letter == 'Z') {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public static boolean equalsNumber(char number) {
-		if (number == '1' || number == '2' || number == '3' || number == '4' || number == '5' || number == '6'
-				|| number == '7' || number == '8' || number == '9') {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	
 
 	public String toString() {
 		return firstName + "," + lastName + "," + birthDate + "," + address + "," + city + "," + province + ","
-				+ postalCode + "," + phoneNumber;
+				+ postalCode + "," + phoneNumber+","+studentID;
 	}
 
 	public boolean equals(StudentInfo iD) {
@@ -419,7 +375,7 @@ public class StudentInfo implements Comparable {
 	 * @param postalCode
 	 *            the postalCode to set
 	 */
-	public void setPostalCode(String postalCode) {
+	public void setPostalCode(String postalCode){		
 		this.postalCode = postalCode;
 	}
 
@@ -478,5 +434,3 @@ public class StudentInfo implements Comparable {
 	}
 
 }
-
-//enum Day{SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY}

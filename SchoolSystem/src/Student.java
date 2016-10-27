@@ -11,7 +11,7 @@ import java.util.Scanner;
 /* Student.java
  * This program acts as a hub in order to perform a number of tasks related to student records
  * @author Dalton Firth
- * @version 2016/09/28
+ * @version 2016/10/28
  */
 
 public class Student {
@@ -21,111 +21,35 @@ public class Student {
 	public static File f = new File("src\\student.txt");
 	public static BufferedReader fbr = null;
 	public static FileOutputStream fileOutputStream = null;
-	public static PrintStream fps =null;
-	//public enum Province {BRITISHCOLUMBIA, YUKON, ALBERTA, NORTHWESTTERRITORIES, SASKATCHEWAN, NUNAVUT, MANITOBA, ONTARIO, QUEBEC, NEWBRUNSWICK, NEWFOUNDLANDANDLABRADOR, PRINCEEDWARDISLAND, NOVASCOTIA, NULL}
+	public static PrintStream fps = null;
 
-
-	
-	//enum Month {JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER}
-	
-
-/**
- * this methods sets the values for the bufferedReader, fileOutputStream and printStream and creates a file if it does not exist
- */
-	public static void setUp(){
-		
-		try {
-			fbr = new BufferedReader(new FileReader("src\\student.txt"));
-			fileOutputStream = new FileOutputStream(f);
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-			if (!f.exists())
-			{
-				try {
-					f.createNewFile();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		PrintStream fps = new PrintStream(fileOutputStream);
-	}
-	
-	
-	/**
-	 * this method saves toe values stored in the studentInfo arrayList to a file for storage
-	 */
-	public static void saveToFile() {
-		try {
-			f.createNewFile();
-
-			if (studentRecords.size() > 0) {
-				fps.println(studentRecords.size() + "," + studentRecords.get(studentRecords.size() - 1).getStudentID());
-
-				for (int i = 0; i < studentRecords.size(); i++) {
-					fps.println(studentRecords.get(i).toString());
-				}
-			}
-			else {
-				System.out.println("You have no students to save.");
-			}
-		} catch (IOException e) {
-
-		}
-	}
-	
-	/**
-	 * This methods reads the information that is stored in the file
-	 */
-	public static void readFromFile() {
-		try {
-			
-
-			String lineOne = fbr.readLine();
-			String[] splitFile = lineOne.split(", ");
-			ArrayList<StudentInfo> tempStudentList = new ArrayList<StudentInfo>();
-
-			for (int i = 0; i < Integer.parseInt(splitFile[0]); i++) {
-				String[] nextLine = fbr.readLine().split(",");
-
-				tempStudentList.get(i).setFirstName(nextLine[0]);
-				tempStudentList.get(i).setLastName(nextLine[1]);
-				tempStudentList.get(i).setStudentID(Long.parseLong(nextLine[2]));
-				tempStudentList.get(i).setAddress(nextLine[3]);
-				tempStudentList.get(i).setCity(nextLine[4]);
-				tempStudentList.get(i).setProvince(selectProvince(nextLine[5]));
-				tempStudentList.get(i).setPostalCode(nextLine[6]);
-				tempStudentList.get(i).setPhoneNumber(nextLine[7]);
-
-			}
-
-		} catch (IOException | InvalidInputExceptions e) {
-		}
-
-	}
-	
-	
-	
 	/**
 	 * This is the main method where code is executed
+	 * 
 	 * @param args
+	 *            String array of arguments
 	 */
 	public static void main(String[] args) {
 
-		setUp();
-		
+		setUp();// initializes the bufferedReder, fileOutputStream and
+				// printStream
+
+		 readFile();// loads the information saved to the file and adds in to
+		// the arrayList
+
 		//fps.println();
-		
 
 		int options = 0;
+
+		// gets input and selects an action to perform
 		do {
 			System.out.println("To add a student into the records please press: 1");
-			System.out.println("To find a student please press:2");
-			System.out.println("To print all student records please press:3");
+			System.out.println("To find a student please press: 2");
+			System.out.println("To print all student records please press: 3");
+			System.out.println("To save the student records please press: 4");
 			System.out.println("To exit the program please press: 10");
 
-			// this try catch insure that the user inputs an integer value
+			// this try catch insures that the user inputs an integer value
 			try {
 
 				options = Integer.parseInt(scan.nextLine());
@@ -144,10 +68,10 @@ public class Student {
 			if (options == 3)
 				printAllStudents();
 			if (options == 4)
-				saveToFile();
-			
+				saveFile();
 
-		} while (options != 10);
+		} while (options != 10);// runs infinitely unless the user wishes to
+								// exit
 
 	}
 
@@ -157,78 +81,61 @@ public class Student {
 	public static void addStudent() {
 
 		studentRecords.trimToSize();
-		//studentRecords.add(new StudentInfo());
-		
-		String firstName=null, lastName=null, birthDate=null, address=null, city=null, postalCode=null, phoneNumber=null;
-		String provinceIn=null;
-		
-		
-		
-		//studentRecords.get(studentRecords.size() - 1).setStudentID();
+
+		String firstName = null, lastName = null, birthDate = null, address = null, city = null, postalCode = null,
+				phoneNumber = null;
+		String provinceIn = null;
 
 		System.out.println("Enter your first name");
 		firstName = scan.nextLine();
-		//studentRecords.get(studentRecords.size() - 1).setFirstName(scan.nextLine());
 
 		System.out.println("Enter your last name");
 		lastName = scan.nextLine();
-		//studentRecords.get(studentRecords.size() - 1).setLastName(scan.nextLine());
 
 		System.out.println("Enter your birth date (yyyy/mm/dd)");
 		address = scan.nextLine();
-		//studentRecords.get(studentRecords.size() - 1).setBirthDate(scan.nextLine());
 
 		System.out.println("Enter your address");
 		birthDate = scan.nextLine();
-		//studentRecords.get(studentRecords.size() - 1).setAddress(scan.nextLine());
 
 		System.out.println("Enter your city");
 		city = scan.nextLine();
-		//studentRecords.get(studentRecords.size() - 1).setCity(scan.nextLine());
 
 		System.out.println("Enter your province");
 		provinceIn = scan.nextLine();
-		
-		//studentRecords.get(studentRecords.size() - 1).setProvince(scan.nextLine());
-		
-		
-		
-		
-		
 
-		System.out.println("Enter your postal code (X#X#X#)");
-		postalCode = scan.nextLine();
-		
-		
-		
+		while(true){
+			
+			System.out.println("Enter your postal code (X#X#X#)");
+			postalCode = scan.nextLine();
 
-			//studentRecords.get(studentRecords.size() - 1).setPostalCode(postalCode);
-		//} else {
-		//	studentRecords.remove(studentRecords.size() - 1);
-		//	System.out.println("");
-		//	System.out.println("Invalid input, please try again.");
-		//	System.out.println("");
-		//	return;
-		//}
+			if(checkPostalCode(postalCode))
+				break;
+			else{
+				System.out.println("Please input the proper format (X#X#X#)");
+				System.out.println("");
+			}
+		}
 
 		System.out.println("Enter your phone number");
 		phoneNumber = scan.nextLine();
-		//studentRecords.get(studentRecords.size() - 1).setPhoneNumber(scan.nextLine());
-		
-		
-		studentRecords.add(new StudentInfo(firstName, lastName, birthDate, address, city, selectProvince(provinceIn), postalCode, phoneNumber ));
 
-		
+		studentRecords.add(new StudentInfo(firstName, lastName, birthDate, address, city, selectProvince(provinceIn),
+				postalCode, phoneNumber));
+
 	}
 
 	/**
-	 * this method changes the value of province into an enum of provinces for storage
-	 * @param provinceIn a String input from the user that is converted to an enum
+	 * this method changes the value of province into an enum of provinces for
+	 * storage
+	 * 
+	 * @param provinceIn
+	 *            a String input from the user that is converted to an enum
 	 * @return returns the enum value for the selected province
 	 */
-	public static Province selectProvince (String provinceIn){
-		
-		switch (provinceIn){
+	public static Province selectProvince(String provinceIn) {
+
+		switch (provinceIn) {
 		case "bc":
 		case "britishcolumbia":
 		case "british columbia":
@@ -280,15 +187,9 @@ public class Student {
 			} catch (InvalidInputExceptions e) {
 			}
 			return null;
-			
-		
 		}
-		
-		
 	}
-	
-	
-	
+
 	/**
 	 * This method prints the fields of a student
 	 * 
@@ -310,6 +211,7 @@ public class Student {
 	/**
 	 * Prints all students in the array list
 	 */
+	@SuppressWarnings("unchecked")
 	public static void printAllStudents() {
 
 		Collections.sort(studentRecords);
@@ -570,7 +472,7 @@ public class Student {
 		String isUser = null, userEdit = null;
 
 		for (int i = 0; i < studentRecords.size(); i++) {
-			if (studentRecords.get(i).getProvince()==selectProvince(province)) {
+			if (studentRecords.get(i).getProvince() == selectProvince(province)) {
 				printStudent(i);
 				System.out.println("Is this the student you are looking for? (y/n)");
 				isUser = scan.nextLine();
@@ -678,5 +580,130 @@ public class Student {
 
 		}
 	}
+	
+	/**
+	 * this method checks to see if the postal code entered is the expected format
+	 * @param postalCode a string input that is compared
+	 * @return
+	 */
+	public static boolean checkPostalCode(String postalCode) {
+		for (int i = 0; i < postalCode.length(); i++) {
+			if (i % 2 == 0) {
+				if (!equalsUpperCaseLetter(postalCode.charAt(i))) {
+					return false;
+				}
+			} else {
+				if (!equalsNumber(postalCode.charAt(i))) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 
+	public static boolean equalsUpperCaseLetter(char letter) {
+		if (letter == 'A' || letter == 'B' || letter == 'C' || letter == 'D' || letter == 'E' || letter == 'F'
+				|| letter == 'G' || letter == 'H' || letter == 'I' || letter == 'J' || letter == 'K' || letter == 'L'
+				|| letter == 'M' || letter == 'N' || letter == 'O' || letter == 'P' || letter == 'Q' || letter == 'R'
+				|| letter == 'S' || letter == 'T' || letter == 'U' || letter == 'V' || letter == 'W' || letter == 'X'
+				|| letter == 'Y' || letter == 'Z') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * checks to see if the inputed value is a number
+	 * @param number a char that may be a number
+	 * @return true if the value is a number
+	 */
+	public static boolean equalsNumber(char number) {
+		if (number == '1' || number == '2' || number == '3' || number == '4' || number == '5' || number == '6'
+				|| number == '7' || number == '8' || number == '9') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * this methods sets the values for the bufferedReader, fileOutputStream and
+	 * printStream and creates a file if it does not exist
+	 */
+	public static void setUp() {
+
+		try {
+			fbr = new BufferedReader(new FileReader("src\\student.txt"));
+			fileOutputStream = new FileOutputStream(f);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+			if (!f.exists()) {
+				try {
+					f.createNewFile();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		PrintStream fps = new PrintStream(fileOutputStream);
+	}
+
+	/**
+	 * this method saves toe values stored in the studentInfo arrayList to a
+	 * file for storage
+	 */
+	public static void saveFile() {
+
+		// compresses each studentInfo field into 1 string then saves it to the
+		// file with "," separating the fields
+		if (studentRecords.size() > 0) {
+			fps.println(studentRecords.size() + "," + studentRecords.get(studentRecords.size() - 1).getStudentID());
+
+			for (int i = 0; i < studentRecords.size(); i++) {
+				fps.println(studentRecords.get(i).toString());
+			}
+		} else {
+			System.out.println("You have no students to save.");
+		}
+	}
+
+	/**
+	 * This methods reads the information that is stored in the file
+	 */
+	public static void readFile() {
+		ArrayList<StudentInfo> tempStudentList = null;
+		try {
+			BufferedReader lineRead = new BufferedReader(new FileReader(f));
+
+			String lineOne = lineRead.readLine();
+			String[] splitFile = lineOne.split(",");
+			tempStudentList = new ArrayList<StudentInfo>();
+
+			for (int i = 0; i < studentRecords.size() - 1; i++) {
+				studentRecords.remove(i);
+			}
+
+			for (int i = 0; i < Integer.parseInt(splitFile[0]); i++) {
+				String[] nextLine = lineRead.readLine().split(",");
+
+				tempStudentList.add(new StudentInfo());
+
+				studentRecords.get(i).setFirstName(nextLine[0]);
+				studentRecords.get(i).setLastName(nextLine[1]);
+				studentRecords.get(i).setBirthDate(nextLine[2]);
+				studentRecords.get(i).setAddress(nextLine[3]);
+				studentRecords.get(i).setCity(nextLine[4]);
+				studentRecords.get(i).setProvince(selectProvince(nextLine[5]));
+				studentRecords.get(i).setPostalCode(nextLine[6]);
+				studentRecords.get(i).setPhoneNumber(nextLine[7]);
+				studentRecords.get(i).setStudentID(Long.parseLong(nextLine[8]));
+
+			}
+
+		} catch (IOException e) {
+		}
+		studentRecords = tempStudentList;
+	}
 }
