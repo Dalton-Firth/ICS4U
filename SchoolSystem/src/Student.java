@@ -31,18 +31,15 @@ public class Student {
 	 */
 	public static void main(String[] args) {
 
-		setUp();// initializes the bufferedReder, fileOutputStream and
-				// printStream
-
 		 readFile();// loads the information saved to the file and adds in to
 		// the arrayList
 
-		//fps.println();
 
 		int options = 0;
 
 		// gets input and selects an action to perform
 		do {
+			System.out.println("");
 			System.out.println("To add a student into the records please press: 1");
 			System.out.println("To find a student please press: 2");
 			System.out.println("To print all student records please press: 3");
@@ -135,6 +132,7 @@ public class Student {
 	 */
 	public static Province selectProvince(String provinceIn) {
 
+		provinceIn= provinceIn.toLowerCase();
 		switch (provinceIn) {
 		case "bc":
 		case "britishcolumbia":
@@ -627,57 +625,56 @@ public class Student {
 		}
 	}
 
-	/**
-	 * this methods sets the values for the bufferedReader, fileOutputStream and
-	 * printStream and creates a file if it does not exist
-	 */
-	public static void setUp() {
-
-		try {
-			fbr = new BufferedReader(new FileReader("src\\student.txt"));
-			fileOutputStream = new FileOutputStream(f);
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-			if (!f.exists()) {
-				try {
-					f.createNewFile();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		PrintStream fps = new PrintStream(fileOutputStream);
-	}
 
 	/**
 	 * this method saves toe values stored in the studentInfo arrayList to a
 	 * file for storage
 	 */
 	public static void saveFile() {
-
-		// compresses each studentInfo field into 1 string then saves it to the
-		// file with "," separating the fields
 		if (studentRecords.size() > 0) {
-			fps.println(studentRecords.size() + "," + studentRecords.get(studentRecords.size() - 1).getStudentID());
+			try {
+				FileOutputStream fos = new FileOutputStream(f);
+				long largestStudentNumber = -1;
+				@SuppressWarnings("resource")
+				PrintStream write = new PrintStream(fos);
 
-			for (int i = 0; i < studentRecords.size(); i++) {
-				fps.println(studentRecords.get(i).toString());
+				if (!f.exists()) {
+					f.createNewFile();
+				}
+
+				for (int i = 0; i < studentRecords.size(); i++){
+					if (largestStudentNumber < studentRecords.get(i).getStudentID()){
+						largestStudentNumber = studentRecords.get(i).getStudentID();
+					}
+				}
+				
+				write.println(studentRecords.size() + ", " + largestStudentNumber);
+
+				for (int i = 0; i < studentRecords.size(); i++) {
+					write.println(studentRecords.get(i).toString());
+				}
+
+			} catch (IOException e) {
 			}
-		} else {
+		}
+		else {
 			System.out.println("You have no students to save.");
 		}
+
 	}
+	
 
 	/**
 	 * This methods reads the information that is stored in the file
+	 * @throws IOException 
 	 */
-	public static void readFile() {
+	public static void readFile() throws IOException {
 		ArrayList<StudentInfo> tempStudentList = null;
-		try {
-			BufferedReader lineRead = new BufferedReader(new FileReader(f));
 
-			String lineOne = lineRead.readLine();
+		
+			BufferedReader read = new BufferedReader(new FileReader(f));
+
+			String lineOne = read.readLine();
 			String[] splitFile = lineOne.split(",");
 			tempStudentList = new ArrayList<StudentInfo>();
 
@@ -686,24 +683,16 @@ public class Student {
 			}
 
 			for (int i = 0; i < Integer.parseInt(splitFile[0]); i++) {
-				String[] nextLine = lineRead.readLine().split(",");
+				String[] nextLine = read.readLine().split(",");
 
-				tempStudentList.add(new StudentInfo());
+				tempStudentList.add(new StudentInfo(nextLine[0], nextLine[1], nextLine[2], nextLine[3], nextLine[4], selectProvince(nextLine[5]), nextLine[6], nextLine[7]));
 
-				studentRecords.get(i).setFirstName(nextLine[0]);
-				studentRecords.get(i).setLastName(nextLine[1]);
-				studentRecords.get(i).setBirthDate(nextLine[2]);
-				studentRecords.get(i).setAddress(nextLine[3]);
-				studentRecords.get(i).setCity(nextLine[4]);
-				studentRecords.get(i).setProvince(selectProvince(nextLine[5]));
-				studentRecords.get(i).setPostalCode(nextLine[6]);
-				studentRecords.get(i).setPhoneNumber(nextLine[7]);
-				studentRecords.get(i).setStudentID(Long.parseLong(nextLine[8]));
-
+				tempStudentList.get(i).setStudentID(Long.parseLong(nextLine[8]));
 			}
 
-		} catch (IOException e) {
-		}
+		
 		studentRecords = tempStudentList;
+
 	}
+
 }

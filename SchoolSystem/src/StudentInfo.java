@@ -1,17 +1,20 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /* StudentInfo.java
  * This program creates a studentInfo object with various fields that store data related to keeping student records
  * @author Dalton Firth
- * @version 2016/10/28
+ * @version 2016/10/31
  */
 
 
 public class StudentInfo implements Comparable {
 	
-	private static long studentNum = 323000000;
 	
+	public static long studentConstant = makeStudentConstant();
 	private String firstName, lastName, birthDate, address, city, postalCode, phoneNumber;
-	private long studentID = studentNum;
-	
+	private long studentID = studentConstant;
 	private Province province;
 
 	/**
@@ -27,185 +30,6 @@ public class StudentInfo implements Comparable {
 		setProvince(Province.ALBERTA);
 		setAddress("");
 		setStudentID(++studentID);
-	}
-
-	/**
-	 * Makes a new Student with a first name
-	 * 
-	 * @param firstName
-	 *            String - the student's first name
-	 */
-	public StudentInfo(String firstName) {
-		setBirthDate("");
-		setCity("");
-		setFirstName(firstName);
-		setLastName("");
-		setPhoneNumber("");
-		setPostalCode("");
-		setProvince(Province.ALBERTA);
-		setAddress("");
-		setStudentID(++studentID);
-	}
-
-	/**
-	 * Makes a new Student with a first name and a last name
-	 * 
-	 * @param firstName
-	 *            String - the student's first name
-	 * @param lastName
-	 *            String - the student's last name
-	 */
-	public StudentInfo(String firstName, String lastName) {
-		setBirthDate("");
-		setCity("");
-		setFirstName(firstName);
-		setLastName(lastName);
-		setPhoneNumber("");
-		setPostalCode("");
-		setProvince(Province.ALBERTA);
-		setAddress("");
-		setStudentID(++studentID);
-	}
-
-	/**
-	 * Makes a new Student with a first name, a last name and a birth date
-	 * 
-	 * @param firstName
-	 *            String - the student's first name
-	 * @param lastName
-	 *            String - the student's last name
-	 * @param birth
-	 *            String - the student's birth date
-	 */
-	public StudentInfo(String firstName, String lastName, String birth) {
-
-		setBirthDate(birth);
-		setCity("");
-		setFirstName(firstName);
-		setLastName(lastName);
-		setPhoneNumber("");
-		setPostalCode("");
-		setProvince(Province.ALBERTA);
-		setAddress("");
-		setStudentID(++studentID);
-	}
-
-	/**
-	 * Makes a new Student with a first name, a last name, a birth date and a
-	 * home city
-	 * 
-	 * @param firstName
-	 *            String - the student's first name
-	 * @param lastName
-	 *            String - the student's last name
-	 * @param birth
-	 *            String - the student's birth date
-	 * @param city
-	 *            String - the student's home city
-	 */
-	public StudentInfo(String firstName, String lastName, String birth, String address) {
-
-		setBirthDate(birth);
-		setFirstName(firstName);
-		setLastName(lastName);
-		setAddress(address);
-		setCity("");
-		setProvince(Province.ALBERTA);
-		setPostalCode("");
-		setPhoneNumber("");
-		setStudentID(++studentID);
-	}
-
-	/**
-	 * Makes a new Student with a first name, a last name, a birth date, a home
-	 * city and a phone number
-	 * 
-	 * @param firstName
-	 *            String - the student's first name
-	 * @param lastName
-	 *            String - the student's last name
-	 * @param birth
-	 *            String - the student's birth date
-	 * @param city
-	 *            String - the student's home city
-	 * @param phoneNumber
-	 *            String - the student's phone number
-	 */
-	public StudentInfo(String firstName, String lastName, String birth, String address, String city) {
-
-		setBirthDate(birth);
-		setFirstName(firstName);
-		setLastName(lastName);
-		setAddress(address);
-		setCity(city);
-		setProvince(Province.ALBERTA);
-		setPostalCode("");
-		setPhoneNumber("");
-		setStudentID(++studentID);
-	}
-
-	/**
-	 * Makes a new Student with a first name, a last name, a birth date, a home
-	 * city, a phone number and a postal code
-	 * 
-	 * @param firstName
-	 *            String - the student's first name
-	 * @param lastName
-	 *            String - the student's last name
-	 * @param birth
-	 *            String - the student's birth date
-	 * @param city
-	 *            String - the student's home city
-	 * @param phoneNumber
-	 *            String - the student's phone number
-	 * @param postalCode
-	 *            String - the student's postal code
-	 */
-	public StudentInfo(String firstName, String lastName, String birth, String address, String city, Province province) {
-
-		setBirthDate(birth);
-		setFirstName(firstName);
-		setLastName(lastName);
-		setAddress(address);
-		setCity(city);
-		setProvince(province);
-		setPostalCode("");
-		setPhoneNumber("");
-		setStudentID(++studentID);
-	}
-
-	/**
-	 * Makes a new Student with a first name, a last name, a birth date, a home
-	 * city, a phone number, a postal code and a province
-	 * 
-	 * @param firstName
-	 *            String - the student's first name
-	 * @param lastName
-	 *            String - the student's last name
-	 * @param birth
-	 *            String - the student's birth date
-	 * @param city
-	 *            String - the student's home city
-	 * @param phoneNumber
-	 *            String - the student's phone number
-	 * @param postalCode
-	 *            String - the student's postal code
-	 * @param province
-	 *            String - the student's home province
-	 */
-	public StudentInfo(String firstName, String lastName, String birth, String address, String city, Province province,
-			String postalCode) {
-
-		setBirthDate(birth);
-		setFirstName(firstName);
-		setLastName(lastName);
-		setAddress(address);
-		setCity(city);
-		setProvince(province);
-		setPostalCode(postalCode);
-		setPhoneNumber("");
-		setStudentID(++studentID);
-
 	}
 
 	/**
@@ -241,22 +65,32 @@ public class StudentInfo implements Comparable {
 		setProvince(province);
 		setPostalCode(postalCode);
 		setPhoneNumber(phoneNumber);
-		setStudentID(++studentNum);
+		setStudentID(++studentConstant);
 	}
 
 	
-
+/**
+ * puts all the fields of the object into 1 string with "," separating them
+ */
 	public String toString() {
 		return firstName + "," + lastName + "," + birthDate + "," + address + "," + city + "," + province + ","
 				+ postalCode + "," + phoneNumber+","+studentID;
 	}
 
+	/**
+	 * checks to see if the student ids are equal
+	 * @param iD a long value that is compared
+	 * @return true if equal
+	 */
 	public boolean equals(StudentInfo iD) {
 		if (this.studentID == iD.getStudentID())
 			return true;
 		return false;
 	}
-
+	
+/**
+ * compares the elements of the current object to another one
+ */
 	public int compareTo(Object E) {
 
 		StudentInfo tempStudent = (StudentInfo) E;
@@ -430,7 +264,26 @@ public class StudentInfo implements Comparable {
 	 */
 	public void setStudentID(long studentID) {
 		this.studentID = studentID;
-		studentNum++;
+		studentConstant++;
 	}
+	
+	/**
+	 * sets the base value for the student number
+	 * @return a long used for the base value
+	 */
+	public static long makeStudentConstant() {
+		try {
+			
+			BufferedReader read = new BufferedReader(new FileReader(Student.f));
 
+			String lineOne = read.readLine();
+			String[] splitFile = lineOne.split(",");
+
+			return Long.parseLong(splitFile[1]);
+
+		} catch (IOException | NullPointerException | NumberFormatException e) {
+			return 323000000;
+		}
+
+	}
 }
