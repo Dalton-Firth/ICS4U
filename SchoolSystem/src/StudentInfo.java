@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 
 /* StudentInfo.java
  * This program creates a studentInfo object with various fields that store data related to keeping student records
@@ -12,7 +10,8 @@ import java.io.IOException;
 public class StudentInfo implements Comparable {
 	
 	
-	public static long studentConstant = makeStudentConstant();
+	public static long studentConstant = 323000000;
+	
 	private String firstName, lastName, birthDate, address, city, postalCode, phoneNumber;
 	private long studentID = studentConstant;
 	private Province province;
@@ -50,7 +49,7 @@ public class StudentInfo implements Comparable {
 	 *            String - the student's postal code
 	 * @param province
 	 *            String - the student's home province
-	 * @param Address
+	 * @param address
 	 *            String - the student's street address
 	 */
 	public StudentInfo(String firstName, String lastName, String birth, String address, String city, Province province,
@@ -271,19 +270,5 @@ public class StudentInfo implements Comparable {
 	 * sets the base value for the student number
 	 * @return a long used for the base value
 	 */
-	public static long makeStudentConstant() {
-		try {
-			
-			BufferedReader read = new BufferedReader(new FileReader(Student.f));
 
-			String lineOne = read.readLine();
-			String[] splitFile = lineOne.split(",");
-
-			return Long.parseLong(splitFile[1]);
-
-		} catch (IOException | NullPointerException | NumberFormatException e) {
-			return 323000000;
-		}
-
-	}
 }

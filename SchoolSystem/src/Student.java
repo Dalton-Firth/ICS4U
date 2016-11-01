@@ -28,8 +28,9 @@ public class Student {
 	 * 
 	 * @param args
 	 *            String array of arguments
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		 readFile();// loads the information saved to the file and adds in to
 		// the arrayList
@@ -582,7 +583,7 @@ public class Student {
 	/**
 	 * this method checks to see if the postal code entered is the expected format
 	 * @param postalCode a string input that is compared
-	 * @return
+	 * @return true if the postal code is the correct format
 	 */
 	public static boolean checkPostalCode(String postalCode) {
 		for (int i = 0; i < postalCode.length(); i++) {
