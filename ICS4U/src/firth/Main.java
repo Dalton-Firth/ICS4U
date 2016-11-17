@@ -17,7 +17,7 @@ public class Main {
 //		for(int i =0; i<simpleIntArray.length;i++)
 //			System.out.println(simpleIntArray[i]);
 //		
-//		sort.selection(simpleIntArray);
+//		Sort.selection(simpleIntArray);
 //		
 //		System.out.println("");
 //		
@@ -29,7 +29,7 @@ public class Main {
 //		for(int i =0; i<simpleDoubleArray.length;i++)
 //			System.out.println(simpleDoubleArray[i]);
 //		
-//		sort.selection(simpleDoubleArray);
+//		Sort.selection(simpleDoubleArray);
 //		
 //		System.out.println("");
 //		
@@ -41,30 +41,78 @@ public class Main {
 //		for(int i =0; i<simpleStringArray.length;i++)
 //			System.out.println(simpleStringArray[i]);
 //		
-//		sort.selection(simpleStringArray);
+//		Sort.selection(simpleStringArray);
 //		
 //		System.out.println("");
 //		
 //		for(int j =0; j<simpleStringArray.length;j++)
 //			System.out.println(simpleStringArray[j]);
+//		
+//		
+//		
+//		
+//		for(int i =0; i<simpleIntArray.length;i++)
+//			System.out.println(simpleIntArray[i]);
+//		
+//		Sort.insertion(simpleIntArray);
+//		
+//		System.out.println("");
+//		
+//		for(int j =0; j<simpleIntArray.length;j++)
+//			System.out.println(simpleIntArray[j]);
+//		
+//		
+//		
+//		for(int i =0; i<simpleDoubleArray.length;i++)
+//			System.out.println(simpleDoubleArray[i]);
+//		
+//		Sort.insertion(simpleDoubleArray);
+//		
+//		System.out.println("");
+//		
+//		for(int j =0; j<simpleDoubleArray.length;j++)
+//			System.out.println(simpleDoubleArray[j]);
+//		
+//		
+//		for(int i =0; i<simpleStringArray.length;i++)
+//			System.out.println(simpleStringArray[i]);
+//		
+//		Sort.insertion(simpleStringArray);
+//		
+//		System.out.println("");
+//		
+//		for(int j =0; j<simpleStringArray.length;j++)
+//			System.out.println(simpleStringArray[j]);
+//		
+//		for(int i =0; i<simpleIntArray.length;i++)
+//			System.out.println(simpleIntArray[i]);
+//		
+//		Sort.insertion(simpleIntArray);
+//		
+//		System.out.println("");
+//		
+//		for(int j =0; j<simpleIntArray.length;j++)
+//			System.out.println(simpleIntArray[j]);
+//		
+		
+		
+		
 		
 		
 		for(int i =0; i<simpleIntArray.length;i++)
 			System.out.println(simpleIntArray[i]);
 		
-		sort.insertion(simpleIntArray);
+		Sort.bubble(simpleIntArray);
 		
 		System.out.println("");
 		
 		for(int j =0; j<simpleIntArray.length;j++)
 			System.out.println(simpleIntArray[j]);
 		
-		
-		
 		for(int i =0; i<simpleDoubleArray.length;i++)
 			System.out.println(simpleDoubleArray[i]);
 		
-		sort.insertion(simpleDoubleArray);
+		Sort.bubble(simpleDoubleArray);
 		
 		System.out.println("");
 		
@@ -72,11 +120,10 @@ public class Main {
 			System.out.println(simpleDoubleArray[j]);
 		
 		
-		
 		for(int i =0; i<simpleStringArray.length;i++)
 			System.out.println(simpleStringArray[i]);
 		
-		sort.insertion(simpleStringArray);
+		Sort.bubble(simpleStringArray);
 		
 		System.out.println("");
 		
