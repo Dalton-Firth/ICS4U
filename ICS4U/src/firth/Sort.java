@@ -228,6 +228,7 @@ public class Sort {
 
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a.length - 1; j++) {
+				counter = 0;
 				if (a[j + 1] < a[j]) {
 					temp = a[j];
 					a[j] = a[j + 1];
@@ -258,6 +259,7 @@ public class Sort {
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a.length - 1; j++) {
 				if (a[j].compareToIgnoreCase(a[j+1]) > 0) {
+					counter = 0;
 					temp = a[j];
 					a[j] = a[j + 1];
 					a[j + 1] = temp;
