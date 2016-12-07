@@ -1,5 +1,7 @@
 package firth;
 
+import java.util.Arrays;
+
 /* Sort.java
  * This program stores methods for selection, insertion sorting
  * @author Dalton Firth
@@ -76,7 +78,7 @@ public class Sort {
 		for (int i = 0; i < a.length; i++) {
 			for (int j = i; j < a.length; j++) {
 				// replacing the values if a smaller one is found
-				if (a[i].compareTo(a[j]) > 0) {
+				if (a[i].compareToIgnoreCase(a[j]) > 0) {
 					temp = a[j];
 					a[j] = a[i];
 					a[i] = temp;
@@ -172,7 +174,7 @@ public class Sort {
 			// if the value at a[i] is smaller than a[i-1] then it switches
 			// values until the correct position is found
 			if (a[i].compareTo(a[i - 1]) < 0) {
-				for (j = i - 1; (j >= 0) && a[j].compareTo(temp) > 0; j--) {
+				for (j = i - 1; (j >= 0) && a[j].compareToIgnoreCase(temp) > 0; j--) {
 
 					a[j + 1] = a[j];
 
@@ -213,7 +215,7 @@ public class Sort {
 		}
 
 	}
-	
+
 	/**
 	 * this method sorts a double array from smallest to largest using bubble
 	 * sort
@@ -243,7 +245,7 @@ public class Sort {
 		}
 
 	}
-	
+
 	/**
 	 * this method sorts a String array from smallest to largest using bubble
 	 * sort
@@ -258,7 +260,7 @@ public class Sort {
 
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a.length - 1; j++) {
-				if (a[j].compareToIgnoreCase(a[j+1]) > 0) {
+				if (a[j].compareToIgnoreCase(a[j + 1]) > 0) {
 					counter = 0;
 					temp = a[j];
 					a[j] = a[j + 1];
@@ -273,5 +275,152 @@ public class Sort {
 		}
 
 	}
+
+	/**
+	 * 
+	 * @param a an int array to be sorted
+	 */
+	public static void merge(int[] a) {
+		int start = 0;
+		int end = a.length - 1;
+		combiner(a, start, end);
+
+	}
+
+	/**
+	 * 
+	 * @param a an int array that is sorted
+	 * @param start the starting value
+	 * @param mid the middle value
+	 * @param end the ending value
+	 */
+	private static void mergeSort(int[] a, int start, int mid, int end) {
+		int[] c = new int[a.length];
+		for (int i = 0; i < a.length; i++) {
+			c[i] = a[i];
+		}
+		
+		int count = start;
+		int num = mid + 1;
+		int i = start;
+		
+		while (count <= mid && num <= end) {
+			if (c[count] <= c[num]) {
+				a[i] = c[count];
+				count++;
+
+			} else {
+				a[i] = c[num];
+				num++;
+			}
+			i++;
+
+		}
+		while (count <= mid) {
+			a[i] = c[count];
+			i++;
+			count++;
+
+		}
+		while (num <= end) {
+			a[i] = c[num];
+			i++;
+			num++;
+
+		}
+	}
+	
+	/**
+	 * combines the 2 arrays
+	 * @param a an int array that will be sorted
+	 * @param start the starting value of the array
+	 * @param end the ending value of the array
+	 */
+	private static void combiner(int a[], int start, int end) {
+		if (start < end) {
+			int mid = (end + start) / 2;
+			combiner(a, start, mid);
+
+			combiner(a, mid + 1, end);
+
+			mergeSort(a, start, mid, end);
+
+		}
+	}
+
+	public static void quick(int[] a) {
+		int i = 0;
+		int j = a.length - 1;
+		quicksortHelper(a, i, j);
+
+	}
+
+	private static void quicksortHelper(int a[], int i, int j) {
+
+		int num = partition(a, i, j);
+
+		if (i < num - 1)
+			quicksortHelper(a, i, num - 1);
+
+		if (num < j)
+			quicksortHelper(a, num, j);
+
+	}
+
+	private static int partition(int a[], int i, int j) {
+
+		int pivot = a[(i + j) / 2];
+		int temp = 0;
+
+		while (i <= j) {
+
+			while (a[i] < pivot)
+				i++;
+
+			while (a[j] > pivot)
+				j--;
+
+			if (i <= j) {
+				temp = a[j];
+				a[j] = a[i];
+				a[i] = temp;
+
+				i++;
+				j--;
+			}
+		}
+
+		return i;
+	}
+
+	// public static void quick(int[] a) {
+	//
+	// int pivot = a[a.length-1];
+	// int temp = 0;
+	// int j = 0;
+	// int k =-1;
+	//
+	//
+	//
+	// for(int i = 0; i<a.length;i++){
+	// k =-1;
+	// for (j = 0; j<a.length; j++){
+	//
+	// if(a[j]<pivot){
+	// k++;
+	// temp = a[j];
+	// a[j] = a[k];
+	// a[k] = temp;
+	//
+	// }
+	//
+	// }
+	// temp = a[a.length-1];
+	// a[a.length-1] = a[k+1];
+	// a[k+1] = temp;
+	// }
+	//
+	//
+	// }
 
 }
