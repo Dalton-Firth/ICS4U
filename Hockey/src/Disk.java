@@ -25,6 +25,7 @@ public class Disk extends Circle {
 
 	public boolean equals(Object d) {
 
+		
 		Disk testObj = (Disk) d;
 
 		if (testObj.getRadius() == super.getRadius() && testObj.getThickness() == thickness)

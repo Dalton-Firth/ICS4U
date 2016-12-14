@@ -10,7 +10,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		int[] simpleIntArray = {5, 3, 4, 6, 9, 10, 15, 14, 16, 2, 1, 23, 13,-5, 11};
-		double[] simpleDoubleArray = {5.0, 3.0, 4.0, 6.0, 9.0, 10.0, 15.0, 14.0, 16.0, 12.0, 1.0, 23.0, 13.0, -5.0};
+		double[] simpleDoubleArray = {5.0, 3.0, 4.0, 6.0, 9.0, 10.0, 15.0, 14.0, 16.0, 12.0, 1.0, 23.0, 13.0, -5.0, 1.0};
 		String[] simpleStringArray = {"Apple", "Peanut", "Bar", "Dog", "Cobra","Xanadu"};
 		
 		
