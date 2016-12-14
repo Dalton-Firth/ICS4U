@@ -23,17 +23,17 @@ public class Disk extends Circle {
 		return v;
 	}
 
-	public boolean equals(Object d){
-		
-		Disk testObj = (Disk)d;
-		
-		if(testObj.getRadius() == super.getRadius()&&testObj.getThickness() == thickness)
+	public boolean equals(Object d) {
+
+		Disk testObj = (Disk) d;
+
+		if (testObj.getRadius() == super.getRadius() && testObj.getThickness() == thickness)
 			return true;
-		
+
 		return false;
 	}
-	
+
 	public String toString() {
-		return("The disk has a radius "+super.getRadius()+" and thickness"+ thickness+".");
+		return ("The disk has a radius " + super.getRadius() + " and thickness" + thickness + ".");
 	}
 }
