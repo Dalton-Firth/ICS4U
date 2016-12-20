@@ -1,6 +1,6 @@
 
-public class Disk extends Circle {
 
+public class Disk extends Circle{
 	private double thickness;
 
 	public Disk(double r, double t) {
@@ -37,4 +37,5 @@ public class Disk extends Circle {
 	public String toString() {
 		return ("The disk has a radius " + super.getRadius() + " and thickness" + thickness + ".");
 	}
+
 }
