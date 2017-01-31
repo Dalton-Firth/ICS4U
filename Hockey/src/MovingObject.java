@@ -18,9 +18,9 @@ import java.awt.Graphics;
  * object, causing it to morph in some way as it moves.<br>
  * <br>
  * 
- * <b>Requirements:</b> Object designers must create a subclass of
- * MovingObject. They must make use the MovingObject constructor (or no thread
- * will start). They must implement the draw() and animateOneStep() methods.<br>
+ * <b>Requirements:</b> Object designers must create a subclass of MovingObject.
+ * They must make use the MovingObject constructor (or no thread will start).
+ * They must implement the draw() and animateOneStep() methods.<br>
  * <br>
  * 
  * @version November 2015.
@@ -92,12 +92,11 @@ public abstract class MovingObject implements Runnable {
 	 * @param bottom
 	 *            Bottom edge for bouncing.
 	 */
-	public MovingObject(double x, double y, int left, int right, int top,
-			int bottom) {
+	public MovingObject(double x, double y, int left, int right, int top, int bottom) {
 		this.pauseDuration = 40;
 		this.xSpeed = 0;
 		this.ySpeed = 0;
-		this.color = Color.black;
+		this.color = Color.BLUE;
 		this.x = x;
 		this.y = y;
 		this.left = left;
@@ -155,12 +154,11 @@ public abstract class MovingObject implements Runnable {
 	 * Performs one step of animation.
 	 */
 	abstract public void animateOneStep();
-	
+
 	/**
 	 * Returns the x location.
 	 * 
-	 * @return
-	 *            the current x position.
+	 * @return the current x position.
 	 */
 	public double getX() {
 		return x;
@@ -169,14 +167,12 @@ public abstract class MovingObject implements Runnable {
 	/**
 	 * Returns the y location.
 	 * 
-	 * @return
-	 *            the current y position
+	 * @return the current y position
 	 */
 	public double getY() {
 		return y;
 	}
-	
-	
+
 	/**
 	 * Sets the x speed.
 	 * 
@@ -216,7 +212,6 @@ public abstract class MovingObject implements Runnable {
 	public void setY(int y) {
 		this.y = y;
 	}
-
 
 	/**
 	 * Sets color of object.

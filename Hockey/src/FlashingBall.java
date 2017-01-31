@@ -86,13 +86,13 @@ public class FlashingBall extends MovingObject {
 		}
 
 	}
-	
+
 	/**
 	 * Returns true if the ball is filled in.
 	 * 
 	 * @return true if the ball is filled in, false otherwise.
 	 */
-	public boolean isFilled(){
+	public boolean isFilled() {
 		return filledIn;
 	}
 }
